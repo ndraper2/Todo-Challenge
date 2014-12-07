@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> My To-Dos </title>
+	</head>
+
+	<body style="text-align:center">
+		<h1> My To-Dos </h1>
+
+		<p>
+			<input id="newtodo" type="text" size="100"
+			onkeyup="if (event.keyCode == 13) {addTodo()}">
+			<button type="button" onclick="addTodo()">Add</button>
+		</p>
+
+		<ul id="todolist" style="list-style-position:inside" 
+		onclick="removeTodo(event)">
+		</ul>
+
+		<script>
+			var list = document.getElementById("todolist");
+
+			function addTodo() {
+				var newTodo, newItem, newNode;
+				newTodo = document.getElementById("newtodo").value;
+				newItem = document.createElement("li");
+				newNode = document.createTextNode(newTodo);
+				newItem.appendChild(newNode);
+				list.insertBefore(newItem, list.childNodes[0]);
+				document.getElementById("newtodo").value = "";
+			}
+
+			function removeTodo(e) {
+				list.removeChild(e.target);
+			}
+		</script>
+
+	</body>
+</html>
